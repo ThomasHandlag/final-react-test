@@ -45,7 +45,7 @@ const UserForm = () => {
     }
   };
 
-  const inputClasses = "border p-2 rounded";
+  const inputClasses = "border border-gray-300 shadow p-2 rounded-xl";
   const errorClasses = "text-red-500 text-sm";
 
   const validateAge = (value: number | null) => {
@@ -54,13 +54,14 @@ const UserForm = () => {
   };
 
   return (
-    <div className="">
+    <div className="flex flex-col gap-4 p-5">
+      <h1 className="text-2xl font-bold mb-4">Add User</h1>
       <form
         className="grid grid-cols-3 gap-4"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div className="flex flex-col gap-4 col-span-3">
-          <label htmlFor="username">Username:</label>
+        <div className="flex flex-col gap-2 col-span-3">
+          <label htmlFor="username">Username(*)</label>
           <input
             type="text"
             {...register("username")}
@@ -70,15 +71,15 @@ const UserForm = () => {
             <span className={errorClasses}>{errors.username.message}</span>
           )}
         </div>
-        <div className="flex flex-col gap-4 col-span-3">
-          <label htmlFor="email">Email:</label>
+        <div className="flex flex-col gap-2 col-span-3">
+          <label htmlFor="email">Email(*)</label>
           <input type="email" {...register("email")} className={inputClasses} />
           {errors.email && (
             <span className={errorClasses}>{errors.email.message}</span>
           )}
         </div>
-        <div className="flex flex-col gap-4 col-span-3">
-          <label htmlFor="age">Age:</label>
+        <div className="flex flex-col gap-2 col-span-3">
+          <label htmlFor="age">Age</label>
           <input
             type="number"
             className={inputClasses}

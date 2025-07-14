@@ -21,7 +21,7 @@ function App() {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    setIndex((prev) => prev + 1);
+    setIndex(users.length+1);
   }, [users]);
 
   const addUser = (user: User[]) => {
