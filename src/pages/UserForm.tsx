@@ -38,9 +38,11 @@ const UserForm = () => {
 
   const onSubmit: SubmitHandler<UserFormValues> = (data: UserFormValues) => {
     console.log(data);
-    setUsers([
-      { username: data.username, email: data.email, age: age, id: index },
-    ]);
+    if (age === null || age > 0) {
+      setUsers([
+        { username: data.username, email: data.email, age: age, id: index },
+      ]);
+    }
   };
 
   const inputClasses = "border p-2 rounded";
@@ -53,7 +55,10 @@ const UserForm = () => {
 
   return (
     <div className="">
-      <form className="grid grid-cols-3 gap-4" onSubmit={handleSubmit(onSubmit)}>
+      <form
+        className="grid grid-cols-3 gap-4"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <div className="flex flex-col gap-4 col-span-3">
           <label htmlFor="username">Username:</label>
           <input
@@ -84,7 +89,10 @@ const UserForm = () => {
           />
           {age && <span className={errorClasses}>{validateAge(age)}</span>}
         </div>
-        <button className="bg-blue-500 text-white p-2 rounded col-span-1" type="submit">
+        <button
+          className="bg-blue-500 text-white p-2 rounded col-span-1"
+          type="submit"
+        >
           Submit
         </button>
       </form>
