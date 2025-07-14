@@ -1,5 +1,5 @@
 import type { NotificationInstance } from "antd/es/notification/interface";
-import React from "react";
+import React, { useContext } from "react";
 
 type NotificationContextContent = {
     header: string;
@@ -12,5 +12,7 @@ const NotificationContext = React.createContext<NotificationContextContent>({
     message: "",
     api: {} as NotificationInstance
 });
+
+export const useAppNotification = () => useContext(NotificationContext);
 
 export default NotificationContext;

@@ -1,10 +1,31 @@
-import { createBrowserRouter } from "react-router";
-import App from "../App";
+import { createBrowserRouter, Navigate } from "react-router";
+import UserProvider from "../pages/UserProvider";
+import UserDetail from "../pages/UserDetail";
+import UserList from "../pages/UserList";
+import Holder from "../pages/Holder";
 
 const routes = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Holder/>,
+    children: [
+      {
+        index: true,
+        element: <Navigate to="home" />
+      },
+      {
+        path: "home",
+        element: <UserProvider />,
+      },
+      {
+        path: "users",
+        element: <UserList />,
+      },
+      {
+        path: "users/:id",
+        element: <UserDetail />,
+      },
+    ],
   },
 ]);
 
